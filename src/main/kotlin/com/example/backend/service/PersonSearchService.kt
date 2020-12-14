@@ -50,7 +50,7 @@ class PersonSearchService {
         input.street?.let {
             val subpredicates = mutableListOf<String>()
             joins.forEach { join ->
-                subpredicates.add("""trim(lower(${join.key}.street)) = '${it.toLowerCase()}'""")
+                subpredicates.add("""trim(lower(${join.key}.street)) LIKE '%${it.toLowerCase()}%'""")
             }
             predicates.add(subpredicates.joinToString(" OR "))
         }
