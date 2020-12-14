@@ -1,0 +1,65 @@
+type Query {
+    personSearch(input: Search): SearchResult!
+}
+
+input Search {
+    lastname: String @Size( min : 0, max : 255)
+    firstname: String @Size( min : 0, max : 255)
+    _pageNum: Int = 1 @Positive
+    _fetch: Int = 25 @Range(min: 0, max: 100)
+    _sortBy: SortBy
+    _sortDirection: SortDirection
+}
+
+enum SortDirection {
+    ASC
+    DESC
+}
+
+enum SortBy {
+    LASTNAME
+    FIRSTNAME
+}
+
+type SearchResult {
+    _totalCount: Int!
+    _totalTime: Int!
+    _pageCount: Int!
+    _pageNum: Int!
+    _fetchSize: Int!
+    _hasNextPage: Boolean!
+    objects: [Person]!
+}
+
+type Person {
+    id: Int!,
+    lastname: String,
+    firstname: String
+    address: [Address]
+}
+
+type Address {
+    id: Int!,
+    street: String,
+    city: City
+}
+
+type City {
+    name: String,
+    state: String
+}
+
+directive @Range(min : Int = 0, max : Int = 2147483647, message : String = "graphql.validation.Range.message")
+on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @Pattern(regexp : String! =".*", message : String = "graphql.validation.Pattern.message")
+on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @Positive(message : String = "graphql.validation.Positive.message")
+on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @Size(min : Int = 0, max : Int = 2147483647, message : String = "graphql.validation.Size.message")
+on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @NotBlank(message : String = "graphql.validation.NotBlank.message")
+on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION

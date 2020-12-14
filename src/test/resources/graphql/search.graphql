@@ -1,0 +1,23 @@
+query ($input: Search) {
+    personSearch(input: $input){
+        _totalCount
+        _totalTime
+        _pageCount
+        _pageNum
+        _hasNextPage
+        _fetchSize
+        objects {
+            id
+            firstname
+            lastname
+            address {
+                id
+                street
+                city {
+                    name
+                    state
+                }
+            }
+        }
+    }
+}

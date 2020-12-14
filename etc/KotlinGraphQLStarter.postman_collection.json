@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "d00c6a2c-f781-4dd8-9e33-de823b57c9df",
+		"name": "KotlinGraphQLStarter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Search: localhost:8081/graphql",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "27953306-2ada-4ac5-98a5-a01bd0b67442",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query ($input: Search) {\r\n    search(input: $input){\r\n        _totalCount\r\n        _totalTime\r\n        _pageCount\r\n        _pageNum\r\n        _hasNextPage\r\n        cases {\r\n            kontonummer\r\n            ba\r\n            baObject {\r\n                name\r\n            }\r\n            deleted\r\n            scope\r\n            migrationDate\r\n            person {\r\n                vorname\r\n                name\r\n            }\r\n        }\r\n    }\r\n}",
+						"variables": "{\r\n    \"input\": {\r\n        \"_fetch\": 25,\r\n        \"_pageNum\": 1,\r\n        \"deleted\": true,\r\n        \"_sortBy\": \"VORNAME\",\r\n        \"name\": \"Schubert\"\r\n    }\r\n}"
+					},
+					"options": {
+						"graphql": {}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
