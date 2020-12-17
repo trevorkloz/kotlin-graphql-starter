@@ -3,9 +3,9 @@ type Query {
 }
 
 input Search {
-    lastname: String @Size( min : 0, max : 255)
-    firstname: String @Size( min : 0, max : 255)
-    street: String @Size( min : 0, max : 255)
+    lastname: String @Size( min : 0, max : 255) @Check
+    firstname: String @Size( min : 0, max : 255) @Check
+    street: String @Size( min : 0, max : 255) @Check
     _pageNum: Int = 1 @Positive
     _fetch: Int = 25 @Range(min: 0, max: 100)
     _sortBy: SortBy
@@ -63,4 +63,7 @@ directive @Size(min : Int = 0, max : Int = 2147483647, message : String = "graph
 on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
 
 directive @NotBlank(message : String = "graphql.validation.NotBlank.message")
+on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @Check(message : String = "Wildcards not allowed")
 on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION

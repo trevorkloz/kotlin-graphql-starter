@@ -1,5 +1,6 @@
 package com.example.backend.configuration
 
+import com.example.backend.graphql.rules.CheckWildcardConstraint
 import graphql.GraphQLError
 import graphql.execution.DataFetcherResult
 import graphql.schema.DataFetchingEnvironment
@@ -18,6 +19,7 @@ class GraphQLValidationConfiguration {
     fun directiveWiring(): SchemaDirectiveWiring {
         val validationRules = ValidationRules.newValidationRules()
                 .onValidationErrorStrategy(ThrowExceptionStrategy())
+                .addRule(CheckWildcardConstraint())
                 .build()
         return ValidationSchemaWiring(validationRules)
     }
