@@ -1,18 +1,17 @@
 package com.example.backend.domain
 
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import java.util.*
+import javax.persistence.*
 
 @Table(name = "city")
 @Entity
 class CityEntity {
 
     @Id
-    var id: Long = 0L
+    @GeneratedValue
+    var id: UUID? = null
 
-    var name: String? = null
+    lateinit var name: String
 
-    var country: String? = null
+    lateinit var country: String
 }

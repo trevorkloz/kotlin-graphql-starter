@@ -1,7 +1,9 @@
 package com.example.backend.graphql
 
+import java.util.*
+
 class City (
-       val id: Long,
-       val name: String?,
-       val state: String?
+       val id: UUID,
+       val name: String,
+       val state: String
 )

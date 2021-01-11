@@ -1,5 +1,6 @@
 package com.example.backend.domain
 
+import java.util.*
 import javax.persistence.*
 
 @Table(name = "person")
@@ -7,11 +8,12 @@ import javax.persistence.*
 class PersonEntity {
 
     @Id
-    var id: Long = 0L
+    @GeneratedValue
+    var id: UUID? = null
 
-    var firstname: String? = null
+    lateinit var firstname: String
 
-    var lastname: String? = null
+    lateinit var lastname: String
 
-    var address_id: Long = 0L
+    lateinit var address_id: UUID
 }

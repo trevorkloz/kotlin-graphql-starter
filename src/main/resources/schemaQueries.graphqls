@@ -33,14 +33,14 @@ type SearchResult {
 }
 
 type Person {
-    id: Int!,
+    id: ID!,
     lastname: String,
     firstname: String
-    address: [Address]
+    address: Address
 }
 
 type Address {
-    id: Int!,
+    id: ID!,
     street: String,
     city: City
 }

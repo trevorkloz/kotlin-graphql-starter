@@ -1,5 +1,6 @@
 package com.example.backend.domain
 
+import java.util.*
 import javax.persistence.*
 
 @Table(name = "address")
@@ -7,12 +8,13 @@ import javax.persistence.*
 class AddressEntity {
 
     @Id
-    var id: Long = 0L
+    @GeneratedValue
+    var id: UUID? = null
 
-    var street: String? = null
+    lateinit var street: String
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="city_id", nullable=false)
-    var city: CityEntity? = null
+    lateinit var city: CityEntity
 
 }

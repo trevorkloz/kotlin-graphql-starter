@@ -1,0 +1,19 @@
+type Mutation {
+    createPerson(person: PersonInput): Person!
+}
+
+input PersonInput {
+    lastname: String,
+    firstname: String
+    address: AddressInput
+}
+
+input AddressInput {
+    street: String,
+    city: CityInput
+}
+
+input CityInput {
+    name: String,
+    state: String
+}

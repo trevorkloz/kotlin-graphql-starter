@@ -1,8 +1,10 @@
 package com.example.backend.graphql
 
+import java.util.*
+
 open class Address (
-        val id: Long,
-        val street: String?,
-        val city: City?
+        val id: UUID,
+        val street: String,
+        val city: City
 )
 

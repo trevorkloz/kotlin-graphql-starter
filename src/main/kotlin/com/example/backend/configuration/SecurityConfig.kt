@@ -17,7 +17,9 @@ class WebSecurityConfiguration : WebSecurityConfigurerAdapter() {
             .and().httpBasic()
             .and().authorizeRequests()
             .antMatchers("/graphql").permitAll()
+            .antMatchers("/h2-console").permitAll()
             .and().csrf().disable()
+            .headers().frameOptions().disable();
     }
 
 }
