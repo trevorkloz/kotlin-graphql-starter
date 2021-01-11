@@ -3,17 +3,17 @@ type Mutation {
 }
 
 input PersonInput {
-    lastname: String,
-    firstname: String
+    lastname: String @Size( min : 1, max : 255)
+    firstname: String @Size( min : 1, max : 255)
     address: AddressInput
 }
 
 input AddressInput {
-    street: String,
+    street: String @Size( min : 1, max : 255)
     city: CityInput
 }
 
 input CityInput {
-    name: String,
-    state: String
+    name: String @Size( min : 1, max : 255)
+    state: String @Size( min : 1, max : 255)
 }
